@@ -1,0 +1,11 @@
+{
+	"name": "web",
+	"dockerComposeFile": [
+		"../../docker-compose.yml",
+		"../../docker-compose.pause.yml"
+	],
+	"service": "web",
+	"shutdownAction": "none",
+	"extensions": [ "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "paulmolluzzo.convert-css-in-js" ],
+	"workspaceFolder": "/packages/web"
+}

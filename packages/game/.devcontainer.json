@@ -1,0 +1,13 @@
+{
+	"name": "game",
+	"dockerComposeFile": [
+		"../../docker-compose.yml",
+		"../../docker-compose.pause.yml"
+	],
+	"service": "game",
+	"shutdownAction": "none",
+	"extensions": [
+		"ms-vscode.Go"
+	],
+	"workspaceFolder": "/packages/game"
+}

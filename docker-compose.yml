@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./packages/web
+      dockerfile: Dockerfile
+      args:
+        # The following is the _production_ endpoint for RPSLS. There's a lot of different ways of handeling
+        # this sort of environment settings, but this is the simplist way that is still reasonable.
+        - RPSLS_ENDPOINT=http://localhost:3001/
+    ports:
+      - 3000:3000
+
+  game:
+    build:
+      context: ./packages/game
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000

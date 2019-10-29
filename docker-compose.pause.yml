@@ -1,0 +1,30 @@
+# This config file is used by VSCode's remote container development support. All it really does is configure the
+# containers to stay up and not automatically start their servers... This is because when we use VSCode's remote dev
+# support, we will be launching the webpack dev server and dev go server manually.
+version: "3"
+
+services:
+  web:
+    build:
+      dockerfile: Dockerfile.dev
+    # We need to use a different image name because we are using the same service as the production compose file, but 
+    # different Dockerfiles. We do not want container builds on the same machine to conflict between these envs
+    image: rpsls_web_dev
+    command: sleep infinity
+    volumes:
+      - ./packages/web:/packages/web
+      - node_modules_web:/packages/web/node_modules
+    environment: 
+      # The following is the _development_ endpoint for RPSLS
+      RPSLS_ENDPOINT: http://localhost:3001/
+
+  game:
+    build:
+      dockerfile: Dockerfile.dev
+    image: rpsls_game_dev
+    command: sleep infinity
+    volumes:
+      - ./packages/game:/packages/game
+
+volumes:
+  node_modules_web:
