@@ -2,3 +2,4 @@
 node_modules
 .linaria-cache
 packages/*/bin
+yarn-error.log
